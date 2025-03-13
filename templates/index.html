@@ -30,6 +30,23 @@
     {% include "contact.html" %}
   </div>
 
+    <!-- Blogs Section -->
+    <div id="blogs">
+      <h2 class="md:text-3xl text-indigo-900 font-bold mt-6">Blogs</h2>
+      <div class="gap-6 mt-6">
+        {% for blog in blogs %}
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <a class="hover:underline" href="/blog/{{ blog.id }}">
+              <h3 class="card-title">{{ blog.title }}</h3>
+            </a>
+            <p class="text-sm text-gray-600">Read more →</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
   <div id="projects"> 
     <h2 class="md:text-3xl text-indigo-900 font-bold mt-6">Personal Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
@@ -46,14 +63,14 @@
           <p class="text-sm">{{ project.description }}</p>
           <div class="flex flex-wrap gap-2">
             {% for tech in project.technologies %}
-              <span class="badge {{ tech.color }}">{{ tech.name }}</span>
+              <span class="badge">{{ tech.name }}</span>
             {% endfor %}
           </div>
         </div>
       </div>
       {% endfor %}
       <div class="card bg-base-200 flex items-center justify-center py-4">
-        <a href="https://github.com/robertoskr" class="btn btn-primary text-white hover:bg-primary-focus transition-all duration-300 flex items-center gap-2">
+        <a href="https://github.com/robertoskr" class="btn btn-neutral flex items-center gap-2">
           <!-- Right arrow icon (go icon) -->
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
@@ -64,28 +81,27 @@
     </div>
   </div>
 
-
   <div id="technologies">
     <h2 class="md:text-3xl text-indigo-900 font-bold mt-6">Technologies</h2>
     <p class="text-base md:text-lg text-gray-800 mt-4 leading-relaxed">
-    Throughout my career, I’ve embraced a wide range of technologies, learning quickly and leaning on my strong foundations to deliver impactful solutions. I believe knowing specific technologies isn’t the key—anyone can pick them up fast, <strong>especially with AI on the rise</strong>. What matters most is <strong>experience and a solid base</strong>. Still, if you’re curious, here’s a glimpse:
+      Throughout my career, I’ve embraced a wide range of technologies, learning quickly and leaning on my strong foundations to deliver impactful solutions. I believe knowing specific technologies isn’t the key—anyone can pick them up fast, <strong>especially with AI on the rise</strong>. What matters most is <strong>experience and a solid base</strong>. Still, if you’re curious, here’s a glimpse:
     </p>
     <div class="mt-6 space-y-6">
       <!-- Python & Backend -->
       <div>
         <h3 class="text-xl font-semibold text-gray-800">Data & Backend</h3>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Python</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Rust</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Go</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Sql</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">MongoDB</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">BigTable</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Redis</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Dbt</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Airflow</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Celery</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Kafka</span>
+          <span class="badge badge-soft badge-neutral">Python</span>
+          <span class="badge badge-soft badge-neutral">Rust</span>
+          <span class="badge badge-soft badge-neutral">Go</span>
+          <span class="badge badge-soft badge-neutral">SQL</span>
+          <span class="badge badge-soft badge-neutral">MongoDB</span>
+          <span class="badge badge-soft badge-neutral">BigTable</span>
+          <span class="badge badge-soft badge-neutral">Redis</span>
+          <span class="badge badge-soft badge-neutral">Dbt</span>
+          <span class="badge badge-soft badge-neutral">Airflow</span>
+          <span class="badge badge-soft badge-neutral">Celery</span>
+          <span class="badge badge-soft badge-neutral">Kafka</span>
         </div>
       </div>
 
@@ -93,13 +109,13 @@
       <div>
         <h3 class="text-xl font-semibold text-gray-800">AI & Machine Learning</h3>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">PyTorch</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">TensorFlow</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Langchain</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Langgraph</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Transformers</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Deep Learning</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Statistical Learning</span>
+          <span class="badge badge-soft badge-neutral">PyTorch</span>
+          <span class="badge badge-soft badge-neutral">TensorFlow</span>
+          <span class="badge badge-soft badge-neutral">Langchain</span>
+          <span class="badge badge-soft badge-neutral">Langgraph</span>
+          <span class="badge badge-soft badge-neutral">Transformers</span>
+          <span class="badge badge-soft badge-neutral">Deep Learning</span>
+          <span class="badge badge-soft badge-neutral">Statistical Learning</span>
         </div>
       </div>
 
@@ -107,10 +123,10 @@
       <div>
         <h3 class="text-xl font-semibold text-gray-800">Databases & Data</h3>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">PostgreSQL</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Neo4J</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">PGVector</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">SQL</span>
+          <span class="badge badge-soft badge-neutral">PostgreSQL</span>
+          <span class="badge badge-soft badge-neutral">Neo4J</span>
+          <span class="badge badge-soft badge-neutral">PGVector</span>
+          <span class="badge badge-soft badge-neutral">SQL</span>
         </div>
       </div>
 
@@ -119,9 +135,9 @@
         <h3 class="text-xl font-semibold text-gray-800">Frontend & Full Stack</h3>
         <p class="text-sm text-gray-600 mt-1">Slick UIs</p>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Next.js</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">JavaScript</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">React</span>
+          <span class="badge badge-soft badge-neutral">Next.js</span>
+          <span class="badge badge-soft badge-neutral">JavaScript</span>
+          <span class="badge badge-soft badge-neutral">React</span>
         </div>
       </div>
 
@@ -129,9 +145,9 @@
       <div>
         <h3 class="text-xl font-semibold text-gray-800">Other Tools</h3>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Git</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Docker</span>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Linux</span>
+          <span class="badge badge-soft badge-neutral">Git</span>
+          <span class="badge badge-soft badge-neutral">Docker</span>
+          <span class="badge badge-soft badge-neutral">Linux</span>
         </div>
       </div>
     </div>

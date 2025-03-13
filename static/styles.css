@@ -5,3 +5,9 @@
 .btn{
   text-transform: none;
 }
+
+/* Contact section */
+#contact {
+  border-top: 1px solid #e5e7eb; /* Subtle divider */
+  padding-top: 2rem;
+}

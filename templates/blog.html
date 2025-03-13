@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+{% block title %}
+  {{ blog.title }}
+{% endblock %}
+ 
+{% block content %}
+<div class="w-full min-h-screen">
+  <div class="flex flex-col mx-auto pb-6 px-6 md:px-12 w-[95%] lg:w-[80%]">
+    {% include "header2.html" %}
+    
+    <article class="w-full prose bg-white dark:bg-gray-900 dark:text-gray-100">
+      {{ content | safe }}
+    </article>
+    
+    <style>
+      /* Base styling for the article */
+      .prose {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.6;
+      }
+      
+      /* Direct utility classes to avoid @apply issues */
+      .prose h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #111827;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 0.5rem;
+      }
+      
+      .dark .prose h1 {
+        color: #f9fafb;
+        border-color: #374151;
+      }
+      
+      .prose h2 {
+        font-size: 1.875rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1f2937;
+      }
+      
+      .dark .prose h2 {
+        color: #e5e7eb;
+      }
+      
+      .prose h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1f2937;
+      }
+      
+      .dark .prose h3 {
+        color: #e5e7eb;
+      }
+      
+      .prose h4 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+      }
+      
+      .dark .prose h4 {
+        color: #e5e7eb;
+      }
+      
+      .prose p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: #374151;
+      }
+      
+      .dark .prose p {
+        color: #d1d5db;
+      }
+      
+      .prose ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: #374151;
+      }
+      
+      .dark .prose ul {
+        color: #d1d5db;
+      }
+      
+      .prose ol {
+        list-style-type: decimal;
+        padding-left: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: #374151;
+      }
+      
+      .dark .prose ol {
+        color: #d1d5db;
+      }
+      
+      .prose li {
+        margin-bottom: 0.25rem;
+      }
+      
+      .prose a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+      
+      .prose a:hover {
+        text-decoration: underline;
+      }
+      
+      .dark .prose a {
+        color: #60a5fa;
+      }
+      
+      .prose blockquote {
+        padding-left: 1rem;
+        border-left: 4px solid #d1d5db;
+        font-style: italic;
+        color: #4b5563;
+      }
+      
+      .dark .prose blockquote {
+        border-color: #4b5563;
+        color: #9ca3af;
+      }
+      
+      .prose code {
+        background-color: #f3f4f6;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-family: ui-monospace, monospace;
+        color: #1f2937;
+      }
+      
+      .dark .prose code {
+        background-color: #1f2937;
+        color: #e5e7eb;
+      }
+      
+      .prose pre {
+        background-color: #f3f4f6;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+      }
+      
+      .dark .prose pre {
+        background-color: #1f2937;
+      }
+      
+      .prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .prose th {
+        border: 1px solid #d1d5db;
+        padding: 0.5rem 1rem;
+        background-color: #f3f4f6;
+        text-align: left;
+      }
+      
+      .dark .prose th {
+        border-color: #374151;
+        background-color: #1f2937;
+      }
+      
+      .prose td {
+        border: 1px solid #d1d5db;
+        padding: 0.5rem 1rem;
+      }
+      
+      .dark .prose td {
+        border-color: #374151;
+      }
+      
+      .prose hr {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid #d1d5db;
+      }
+      
+      .dark .prose hr {
+        border-color: #374151;
+      }
+      
+      .prose img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+/* Code blocks - Specifically improved for better rendering */
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.markdown-body pre code {
+  display: block;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+/* Inline code */
+.markdown-body code:not([class*="language-"]) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+}
+
+/* Tables - Specifically improved for better rendering */
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+  background-color: #f6f8fa;
+}
+
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+  vertical-align: top;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/* Links */
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+  margin: 0 0 16px 0;
+}
+
+/* Line breaks in table cells */
+.markdown-body table td br {
+  display: block;
+  margin: 3px 0;
+  content: "";
+}
+    </style>
+    
+    <div id="contact">
+      <h2 class="md:text-3xl text-indigo-900 font-bold mt-6">Contact</h2>
+      {% include "contact.html" %}
+    </div>
+    
+    {% include "footer.html" %}
+  </div>
+</div>
+{% endblock %}
